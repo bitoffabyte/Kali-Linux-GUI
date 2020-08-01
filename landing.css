@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap');
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #2f2f2f;
+    overflow-x: hidden;
+    background-image: url("1301120.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: 'Fira Code', monospace;
+    overflow: hidden;
+}
+
+
+.nav-text{
+	color:white;
+	font-size:1.2em;
+	margin:10px;
+}
+
+
+.navbar{
+	border:1px solid black;
+	background:black;
+	margin:0px;
+	padding:.5%;
+    height: 30%;
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    font-size: 100%;
+    width: 100%;
+    padding-right:10px   ;
+    padding-left: 10px;
+
+}
+
+.navbar > .left-text{
+	float:left;
+	overflow: auto;
+    margin: 0;
+    
+}
+
+.navbar > .right-text{
+	float:right;
+	overflow: auto;
+	margin: 0;
+	margin-right: 50px;
+}
+
+.left-nav{
+	padding: 3px;
+	position: fixed;
+	left: 0;
+	top: 30%;
+	width: 50px;
+	background: rgb(0, 0, 0, 0.5);
+	border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    /* z-index: 100; */
+}
+
+p .left-nav-item{
+	/* padding: 3px; */
+	width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+p .left-nav-item,.nav-text:hover{
+	cursor: pointer;
+}
+.left-nav p:hover{
+    background-color: #ffffff54;
+}
+.left-nav p{
+    width: 45px;
+    border-radius: 4px;
+}
+#date{
+    float: center;
+    margin: auto;
+    color: white;
+    display: inline;
+    text-align: center;
+}
+.body{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+@media (max-width: 991px) {
+    .navbar{
+        font-size: small;
+        font-family: 'Ubuntu', sans-serif;
+    
+    }
+.navbar > .right-text{
+margin-right: 0;
+margin-left: 10px;
+}
+#ter{
+height: 100%;
+width: 100%;
+top: 0;
+left: 0;
+}
+.terminal{
+width: 100%;
+height: 100%;
+}
+}
+
+@media (min-width: 2000px) {
+    .navbar{
+        font-size: 250%;
+    }
+}
+
+
+
+
+
+
+
+/* terminal */
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #2f2f2f;
+}
+.terminal{
+    /* position: absolute; */
+    width: 50%;
+    background: rgba(0, 0, 0, 0.836);
+    color: rgb(51, 255, 0);
+    padding: 10px;
+    height: 50%;
+    /* left: 25%; */
+    overflow-x: hidden;
+    font-size: 1.25em;
+    font-family: monospace;
+    white-space: normal;
+    z-index: 1000;
+  }
+  .terminal-top{
+
+  }
+  h2{
+      color: rgb(47, 85, 255);
+  }
+  .line{
+    display: table;
+    width: 100%;
+  }
+  
+  .terminal span{
+    display:table-cell; 
+    width:120px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  .terminal input{
+    display:table-cell; 
+    width:100%;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    color: rgb(51, 255, 0);
+    outline: none;
+  }
+#ter{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+  
+  
+  #fakeMenu {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    width: 50%;
+    color: rgb(0, 0, 0);
+    background-color: #bbb;
+    padding: 10px;
+    top: 20%;
+    padding-bottom: 0;
+    overflow: hidden;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  #fakeMenu2 {
+    width: 50%;
+    background-color: #bbb;
+    padding: 10px;
+    overflow: hidden;
+  }
+  .icons{
+      float: right;
+      margin: 1%;
+      z-index: 10000;
+  }
+  .min{
+      font-weight: 100px;
+  }
+  .element::-webkit-scrollbar { width: 0 !important }
+.name{
+    display:inline-block; 
+    font-weight:1000;
+    position: relative;
+    margin-top: 1%;
+    margin-left: 11%;
+}
+#ter{
+    left: 25%;
+    top: 20%;
+}
+
+@media (max-width: 991px) {
+#ter{
+height: 100%;
+width: 100%;
+top: 0;
+left: 0;
+}
+.terminal{
+    width: 100%;
+    height: 100%;
+    }
+#fakeMenu,#fakeMenu2{
+    width: 100%;
+}
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 160px;
+    text-align: center;
+    background-color: #bbb;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
