@@ -21,7 +21,7 @@ var commandInfo = {
     'clear': "clears the terminal<br><br>"//give 2 br at the end of last cmd
 }
 var historyCommands = '';
-var clText = 'guest@vinylic.codes:~$'//this should be changed
+var clText = 'guest@user:~$'//this should be changed
 console.log(his)
 function comm(ele) {
     if (event.key === 'Enter') {
