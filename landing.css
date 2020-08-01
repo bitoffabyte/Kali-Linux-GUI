@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap');
+
 html, body{
     height: 100%;
     width: 100%;
@@ -25,11 +26,13 @@ html, body{
 
 
 .navbar{
-	border:1px solid black;
+    border:1px solid black;
+    position: relative;
+    z-index: 10000;
 	background:black;
 	margin:0px;
 	padding:.5%;
-    height: 30%;
+    height: 25px; 
     font-family: 'Ubuntu', sans-serif;
     text-align: center;
     font-size: 100%;
@@ -42,6 +45,7 @@ html, body{
 .navbar > .left-text{
 	float:left;
 	overflow: auto;
+    margin: 0;
     margin: 0;
     
 }
@@ -88,39 +92,14 @@ p .left-nav-item,.nav-text:hover{
     color: white;
     display: inline;
     text-align: center;
+    /* margin-left:-20px ; */
 }
 .body{
     height: 100%;
     width: 100%;
     position: relative;
 }
-@media (max-width: 991px) {
-    .navbar{
-        font-size: small;
-        font-family: 'Ubuntu', sans-serif;
-    
-    }
-.navbar > .right-text{
-margin-right: 0;
-margin-left: 10px;
-}
-#ter{
-height: 100%;
-width: 100%;
-top: 0;
-left: 0;
-}
-.terminal{
-width: 100%;
-height: 100%;
-}
-}
 
-@media (min-width: 2000px) {
-    .navbar{
-        font-size: 250%;
-    }
-}
 
 
 
@@ -190,6 +169,7 @@ html, body{
     padding: 10px;
     top: 20%;
     padding-bottom: 0;
+    padding-top: 0;
     overflow: hidden;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -198,12 +178,16 @@ html, body{
     width: 50%;
     background-color: #bbb;
     padding: 10px;
+    padding-bottom: 0;
+    padding-top: 0;
     overflow: hidden;
   }
   .icons{
       float: right;
       margin: 1%;
       z-index: 10000;
+      color: #574f4f;
+      zoom: 1.25;
   }
   .min{
       font-weight: 100px;
@@ -221,21 +205,7 @@ html, body{
     top: 20%;
 }
 
-@media (max-width: 991px) {
-#ter{
-height: 100%;
-width: 100%;
-top: 0;
-left: 0;
-}
-.terminal{
-    width: 100%;
-    height: 100%;
-    }
-#fakeMenu,#fakeMenu2{
-    width: 100%;
-}
-}
+
 
 
 .dropdown {
@@ -251,15 +221,17 @@ left: 0;
     display: none;
     position: absolute;
     text-align: center;
-    background-color: #f9f9f9;
+    background-color: #242222;
     min-width: 160px;
+    color: #bbb;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     margin: 0;
   }
   .dropdown-content p{
       cursor: pointer;
-      padding: 5%;
+      margin: 0;
+      padding: 10%;
   }
   .dropdown-content p:hover{
     background-color: #53525242;
@@ -269,3 +241,59 @@ left: 0;
   .dropdown:hover .dropdown-content {
     display: block;
   }
+  .icons:hover{
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+  }
+
+  @media (max-width: 991px) {
+    #ter{
+    height: 100%;
+    width: 100%;
+    top: 3%;
+    left: 0;
+    }
+    body{
+    }
+    .terminal{
+        width: 100%;
+        height: 100%;
+        }
+    #fakeMenu,#fakeMenu2{
+        width: 100%;
+    }
+    .dropdown {
+        text-align: left;
+        width: 120px;
+    }
+    }
+    @media (max-width: 991px) {
+        .navbar{
+            font-size: small;
+            font-family: 'Ubuntu', sans-serif;
+        
+        }
+        .navbar > .right-text{
+        margin-right: 20px;
+        margin-left: 20px;
+        }
+        #ter{
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        }
+        .terminal{
+        width: 100%;
+        height: 100%;
+        }
+        body{
+            overflow: auto;
+        }
+    }
+    
+    @media (min-width: 2000px) {
+        .navbar{
+            font-size: 250%;
+        }
+    }

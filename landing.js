@@ -1,3 +1,4 @@
+// Navbar Date
 let d = new Date()
 days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
 let day = days[d.getDay()]
@@ -7,7 +8,7 @@ let time = hr + ":" + min;
 document.getElementById("date").innerText = day + " " + time
 
 
-
+// Terminal Commands
 
 
 let listOfCommands = ['help', 'clear'];
@@ -23,7 +24,7 @@ let commandInfo = {
 let historyCommands = '';
 let clText = 'guest@user:~$'//this should be changed
 console.log(his)
-function comm(ele) {
+const comm = (ele) => {
     if (event.key === 'Enter') {
         let command = textInput.value;
         console.log(command);
@@ -40,7 +41,7 @@ function comm(ele) {
         his.innerHTML = historyCommands;
     }
 }
-function commandFunction(c) {
+const commandFunction = (c) => {
     if (c === 'help') {
         for (let i = 0; i < listOfCommands.length; i++) {
             historyCommands += "<br>" + listOfCommands[i] + " : " + commandInfo[listOfCommands[i]];
@@ -56,56 +57,139 @@ const foc = () => {
 }
 
 
+// nav control 
 document.getElementById("cl").addEventListener('click', () => {
+    document.querySelector("#ter").style.display = "none"
+})
+
+document.getElementById("min").addEventListener('click', () => {
     document.querySelector("#ter").style.display = "none"
 })
 
 
 
 
+let dragItem = document.querySelector("#fakeMenu");
+let container = document.querySelector("body");
+
+let active = false;
+let currentX;
+let currentY;
+let initialX;
+let initialY;
+let xOffset = 0;
+let yOffset = 0;
 
 
 
+const dragStart = (e) => {
+    if (e.type === "touchstart") {
+        initialX = e.touches[0].clientX - xOffset;
+        initialY = e.touches[0].clientY - yOffset;
 
-
-
-// DRAGABLE
-let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-dragElement(document.getElementById("ter"));
-function dragElement(elmnt) {
-    if (document.getElementById("fakeMenu")) {
-        document.getElementById("fakeMenu").onmousedown = dragMouseDown;
     } else {
-        elmnt.onmousedown = dragMouseDown;
-    }
-
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        chk(elmnt.offsetTop)
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
 
     }
 
-    function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
+    if (e.target === dragItem) {
+        active = true;
+
     }
 }
-const chk = (top) => {
-    document.querySelector(".terminal").style.margin = "0px";
+
+const dragEnd = (e) => {
+    initialX = currentX;
+    initialY = currentY;
+    active = false;
 }
+
+const drag = (e) => {
+    if (active) {
+
+        e.preventDefault();
+
+        if (e.type === "touchmove") {
+            currentX = e.touches[0].clientX - initialX;
+            currentY = e.touches[0].clientY - initialY;
+            console.log("123")
+
+        } else {
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+        }
+
+        xOffset = currentX;
+        yOffset = currentY;
+
+        setTranslate(currentX, currentY, document.querySelector("#ter"));
+    }
+}
+
+let m = false
+let fresh = false
+const maximize = (c) => {
+    document.querySelector("#ter").style.width = "99.5%"
+    document.querySelector("#ter").style.height = "100%"
+    document.querySelector(".terminal").style.width = "100%"
+    document.querySelector(".terminal").style.height = "100%"
+    document.querySelector("#fakeMenu").style.width = "100%"
+    document.querySelector("#fakeMenu2").style.width = "100%"
+    console.log(c)
+    let y = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop)
+    document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -15 + "%, 0)";
+    m = true
+    fresh = true
+    // dragEnd()
+    textInput.focus()
+}
+const minimize = () => {
+    document.querySelector("#ter").style.width = "50%"
+    document.querySelector("#ter").style.height = "50%"
+    document.querySelector(".terminal").style.width = "100%"
+    document.querySelector(".terminal").style.height = "100%"
+    document.querySelector("#fakeMenu").style.width = "100%"
+    document.querySelector("#fakeMenu2").style.width = "100%"
+    if (fresh) {
+        document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -25 + "%, 0)";
+        console.log("SDSDSD")
+        fresh = false
+
+    }
+    // dragStart()
+
+    m = false
+}
+const setTranslate = (xPos, yPos, el) => {
+    el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+    // console.log(xPos)
+    let coord = Math.floor(document.querySelector("#ter").getBoundingClientRect().top + document.documentElement.scrollTop)
+    let coord2 = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop)
+    // console.log(coord1)
+    if (coord <= coord2) {
+        maximize(coord2)
+    }
+    else {
+        minimize()
+    }
+}
+container.addEventListener("touchstart", dragStart, false);
+container.addEventListener("touchend", dragEnd, false);
+container.addEventListener("click", drag, false);
+
+container.addEventListener("mousedown", dragStart, false);
+container.addEventListener("mouseup", dragEnd, false);
+container.addEventListener("mousemove", drag, false);
+
+document.getElementById("max").addEventListener('click', () => {
+    if (!m) {
+        maximize()
+    }
+    else {
+        minimize()
+    }
+})
+
+
+
