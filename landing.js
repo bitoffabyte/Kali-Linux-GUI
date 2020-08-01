@@ -10,22 +10,22 @@ document.getElementById("date").innerText = day + " " + time
 
 
 
-var listOfCommands = ['help', 'clear'];
-var his = document.getElementById("history");
-var textInput = document.querySelector("#input");
+let listOfCommands = ['help', 'clear'];
+let his = document.getElementById("history");
+let textInput = document.querySelector("#input");
 
 textInput.focus()
 
-var commandInfo = {
+let commandInfo = {
     'help': "lists all the commands",
     'clear': "clears the terminal<br><br>"//give 2 br at the end of last cmd
 }
-var historyCommands = '';
-var clText = 'guest@user:~$'//this should be changed
+let historyCommands = '';
+let clText = 'guest@user:~$'//this should be changed
 console.log(his)
 function comm(ele) {
     if (event.key === 'Enter') {
-        var command = textInput.value;
+        let command = textInput.value;
         console.log(command);
         textInput.value = "";
         historyCommands += (clText + ' ' + command + '<br>');
@@ -42,7 +42,7 @@ function comm(ele) {
 }
 function commandFunction(c) {
     if (c === 'help') {
-        for (var i = 0; i < listOfCommands.length; i++) {
+        for (let i = 0; i < listOfCommands.length; i++) {
             historyCommands += "<br>" + listOfCommands[i] + " : " + commandInfo[listOfCommands[i]];
         }
     }
@@ -70,7 +70,7 @@ document.getElementById("cl").addEventListener('click', () => {
 
 
 // DRAGABLE
-var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 dragElement(document.getElementById("ter"));
 function dragElement(elmnt) {
     if (document.getElementById("fakeMenu")) {
