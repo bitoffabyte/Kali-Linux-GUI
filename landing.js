@@ -138,7 +138,7 @@ const maximize = (c) => {
     document.querySelector("#fakeMenu2").style.width = "100%"
     console.log(c)
     let y = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop)
-    document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -15 + "%, 0)";
+    document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -20 + "%, 0)";
     m = true
     fresh = true
     // dragEnd()
