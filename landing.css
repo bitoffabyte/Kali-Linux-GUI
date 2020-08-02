@@ -14,7 +14,7 @@ html, body{
     background-attachment: fixed;
     background-size: cover;
     font-family: 'Fira Code', monospace;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .nav-text{
@@ -26,7 +26,7 @@ html, body{
 
 .navbar{
     border:1px solid black;
-    position: relative;
+    position: fixed;
     z-index: 10000;
 	background:black;
 	margin:0px;
@@ -96,7 +96,8 @@ p .left-nav-item,.nav-text:hover{
 .body{
     height: 100%;
     width: 100%;
-    position: relative;
+    /* position: relative; */
+    /* overflow: hidden; */
 }
 
 
@@ -112,7 +113,9 @@ html, body{
     margin: 0;
     padding: 0;
     background-color: #2f2f2f;
+    position: fixed;
 }
+
 .terminal{
     /* position: absolute; */
     width: 50%;
@@ -250,7 +253,7 @@ html, body{
     #ter{
     height: 100%;
     width: 100%;
-    top: 3%;
+    top: 0%;
     left: 0;
     }
     body{
@@ -299,3 +302,10 @@ html, body{
     }
 
 
+    .body{
+        /* overflow: unset; */
+    }
+
+    .body::-webkit-scrollbar {
+        display: none;
+    }

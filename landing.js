@@ -18,7 +18,8 @@ let textInput = document.querySelector("#input");
 
 textInput.focus()
 
-
+// setInterval(document.querySelector(".body").scrollTo(0, document.querySelector(".terminal").scrollHeight), 0)
+document.querySelector(".terminal").scrollTo(0, 0)
 
 
 let commandInfo = {
@@ -225,16 +226,22 @@ const maximize = (c) => {
     document.querySelector("#ter").style.width = "99.5%"
     document.querySelector("#ter").style.height = "100%"
     document.querySelector(".terminal").style.width = "100%"
-    document.querySelector(".terminal").style.height = "100%"
+    document.querySelector(".terminal").style.height = "85%"
     document.querySelector("#fakeMenu").style.width = "100%"
     document.querySelector("#fakeMenu2").style.width = "100%"
     console.log(c)
     let y = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop)
-    document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -20 + "%, 0)";
+    document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -15 + "%, 0)";
     m = true
     fresh = true
     // dragEnd()
     textInput.focus()
+    // document.getElementById('fakeMenu').style.position = "absolute"
+    // document.getElementById('fakeMenu').style.top = "0"
+    // document.getElementById('fakeMenu2').style.position = "absolute"
+    // document.getElementById('fakeMenu2').style.top = "4%"
+
+
 }
 const minimize = () => {
     document.querySelector("#ter").style.width = "50%"
@@ -252,6 +259,10 @@ const minimize = () => {
     // dragStart()
 
     m = false
+    document.getElementById('fakeMenu').style.position = "static"
+    // document.getElementById('fakeMenu').style.top = "0"
+    document.getElementById('fakeMenu2').style.position = "static"
+    // document.getElementById('fakeMenu2').style.top = "4%"
 }
 const setTranslate = (xPos, yPos, el) => {
     el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
