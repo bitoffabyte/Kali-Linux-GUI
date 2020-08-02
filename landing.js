@@ -1,3 +1,5 @@
+// document.write(unescape('%3C%6C%69%6E%6B%20%72%65%6C%3D%22%73%74%79%6C%65%73%68%65%65%74%22%20%68%72%65%66%3D%22%73%74%79%6C%65%73%2F%63%73%73%2E%63%73%73%22%20%74%79%70%65%3D%22%74%65%78%74%2F%63%73%73%22%20%6D%65%64%69%61%3D%22%73%63%72%65%65%6E%22%20%2F%3E%0A%3C%73%63%72%69%70%74%20%74%79%70%65%3D%22%74%65%78%74%2F%6A%61%76%61%73%63%72%69%70%74%22%20%73%72%63%3D%22%73%63%72%69%70%74%2F%6A%73%2E%6A%73%22%20%6C%61%6E%67%75%61%67%65%3D%22%6A%61%76%61%73%63%72%69%70%74%22%3E%3C%2F%73%63%72%69%70%74%3E%0A'));
+
 // Navbar Date
 let d = new Date()
 days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
@@ -10,51 +12,129 @@ document.getElementById("date").innerText = day + " " + time
 
 // Terminal Commands
 
-
-let listOfCommands = ['help', 'clear'];
+let listOfCommands = ['help', 'clear', 'ls', 'cat', 'date', 'cd', 'mv', 'rm', 'rmdir', 'touch', 'flag', 'fork', 'sudo'];
 let his = document.getElementById("history");
 let textInput = document.querySelector("#input");
 
 textInput.focus()
 
+
+
+
 let commandInfo = {
-    'help': "lists all the commands",
-    'clear': "clears the terminal<br><br>"//give 2 br at the end of last cmd
+    'help': "lists all the commands",//done
+    'ls': "List information about the files and folders.",//done
+    "cat": "Read FILE(s) content and print it to the standard output(screen).",//done
+    "date": "Print the system date and time.",//done
+    "clear": "Clear the terminal screen.",//done
+    "cd": "Change the current working directory.",//done
+    "mv": "Move(rename) files.",//done
+    "rm": "Remove files or directories.",//done
+    "rmdir": "Remove directory, this command will only work if the folders are empty.",//done
+    "touch": "Change file timestamps.If the file doesn't exist, it's created an empty one.",
+    "sudo": "Execute a command as the superuser.<br><br>",
+    'flag': "Submit a flag",
+    'fork': "Fork this repository"
 }
+
+let listOfFiles = {
+    "About_Me.txt": () => {
+        historyCommands += "Hi somethings about me<br>bla bla bla<br>"
+    },
+    "Contact_Me.txt": () => {
+        historyCommands += "My Contact info<br>"
+
+    },
+    "Github.txt": () => {
+        historyCommands += "github link<br>"
+
+    },
+    "Linkedin.txt": () => {
+        historyCommands += "my linkedin link<br>"
+
+    },
+    "Credits.txt": () => {
+        historyCommands += "Created by: rootnarayan<br>"
+
+    }
+}
+
 let historyCommands = '';
 let clText = 'guest@user:~$'//this should be changed
 console.log(his)
+
+
 const comm = (ele) => {
     if (event.key === 'Enter') {
         let command = textInput.value;
         console.log(command);
         textInput.value = "";
         historyCommands += (clText + ' ' + command + '<br>');
-        if (listOfCommands.includes(command)) {
+        if (listOfCommands.includes(command) || listOfCommands.includes(command.split(" ")[0])) {
             commandFunction(command);
         }
         else {
             historyCommands += "<br>'" + command + "'" + " is not a recognized command<br> type 'help' to see the list of commands<br><br>";
         }
-
-        console.log(historyCommands)
+        // console.log(historyCommands)
         his.innerHTML = historyCommands;
     }
+}
+const nonSudo = (w) => {
+    historyCommands += "Unable to '" + w + "', Permission Denied!<br>"
 }
 const commandFunction = (c) => {
     if (c === 'help') {
         for (let i = 0; i < listOfCommands.length; i++) {
             historyCommands += "<br>" + listOfCommands[i] + " : " + commandInfo[listOfCommands[i]];
+            console.log(listOfCommands[i])
         }
     }
     if (c === 'clear') {
         historyCommands = "";
         textInput.value = "";
     }
+    let s = c.split(" ")
+    if (c == 'ls') {
+        Object.keys(listOfFiles).map(i => {
+            historyCommands += i + "<br>"
+        })
+        historyCommands += "<br>"
+    }
+    console.log(s)
+    if (s[0] == 'cat') {
+        let file = s[1]
+        if (Object.keys(listOfFiles).includes(file)) {
+            listOfFiles[file]()
+        }
+        else if (s.length = 1) {
+            historyCommands += "Please specify a file<br>"
+
+        }
+        else {
+            historyCommands += file + " not found"
+        }
+    }
+    if (c == 'date') {
+        let da = new Date()
+        historyCommands += days[da.getDay()] + " " + (da.getHours() < 10 ? '0' : '') + da.getHours() + ":" + (da.getMinutes() < 10 ? '0' : '') + da.getMinutes()
+
+    }
+    if (c == 'cd' || c == 'rm' || c == 'mv' || c == 'rmdir' || c == 'touch' || c == 'sudo') {
+        nonSudo(c)
+    }
+    if (s[0] == 'flag') {
+        historyCommands += 'Flag submission will be added soon'
+    }
+    if (c == 'fork') {
+        historyCommands += "Repo will be added soon"
+    }
 }
 const foc = () => {
     textInput.focus()
 }
+
+
 
 
 // nav control 

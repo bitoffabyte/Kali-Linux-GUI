@@ -142,6 +142,7 @@ html, body{
   .terminal span{
     display:table-cell; 
     width:120px;
+    /* color: re    d; */
     background-color: rgba(0, 0, 0, 0);
   }
   
@@ -216,7 +217,7 @@ html, body{
     text-align: center;
     background-color: rgb(0, 0, 0);
   }
-  
+  /*apiKey = cm9vdG5hcmF5YW57VzBXX3kwVV9oNHYzX2YwdU5EX3RoM19GMTRnX0dHfQ== */
   .dropdown-content {
     display: none;
     position: absolute;
