@@ -69,10 +69,11 @@ html, body{
 }
 
 p .left-nav-item{
-	/* padding: 3px; */
+    display: inline-block;
 	width: 100%;
     height: 100%;
     margin: auto;
+    vertical-align: middle;
 }
 
 p .left-nav-item,.nav-text:hover{
@@ -83,7 +84,10 @@ p .left-nav-item,.nav-text:hover{
 }
 .left-nav p{
     width: 45px;
+    /* display: inline-block; */
     border-radius: 4px;
+    /* height: 100%;
+    vertical-align: middle; */
 }
 #date{
     float: center;
@@ -119,7 +123,7 @@ html, body{
 .terminal{
     /* position: absolute; */
     width: 50%;
-    background: rgba(0, 0, 0, 0.836);
+    background: rgba(0, 0, 0, 0.884);
     color: rgb(51, 255, 0);
     padding: 10px;
     height: 50%;
@@ -155,7 +159,9 @@ html, body{
     background: rgba(0, 0, 0, 0);
     color: rgb(51, 255, 0);
     outline: none;
-  }
+    font-size: 16px;
+    font-family: monospace;
+}
 #ter{
   position: absolute;
   width: 100%;
@@ -171,6 +177,7 @@ html, body{
     background-color: #bbb;
     padding: 10px;
     top: 20%;
+    /* height: 4%; */
     padding-bottom: 0;
     padding-top: 0;
     overflow: hidden;
@@ -190,7 +197,8 @@ html, body{
       margin: 1%;
       z-index: 10000;
       color: #574f4f;
-      zoom: 1.25;
+      zoom: 1;
+      padding-right: 5px;
   }
   .min{
       font-weight: 100px;
@@ -253,7 +261,6 @@ html, body{
     #ter{
     height: 100%;
     width: 100%;
-    top: 0%;
     left: 0;
     }
     body{
@@ -264,6 +271,7 @@ html, body{
         }
     #fakeMenu,#fakeMenu2{
         width: 100%;
+        /* top: 10%; */
     }
     .dropdown {
         text-align: left;
@@ -283,7 +291,7 @@ html, body{
         #ter{
         height: 100%;
         width: 100%;
-        top: 0;
+        top: 4%;
         left: 0;
         }
         .terminal{
@@ -308,4 +316,36 @@ html, body{
 
     .body::-webkit-scrollbar {
         display: none;
+    }
+    ::selection {
+        color: none;
+        background: none;
+    }
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+    #ter ::selection {
+        color: white;
+        background: rgb(55, 55, 141);
+    }
+    #ter::-moz-selection {
+        color: white;
+        background: rgb(55, 55, 141);
+    }
+    .fmic{
+        display: inline;
+        cursor: pointer;
+        padding: 10px;
+        margin: 0;
+    }
+    .fmic:hover{
+        background: rgb(116, 115, 115);
+    }
+    #path{
+        color: red;
+        display: table-cell;
+    }
+    .aaa{
+        display: table-cell;
     }

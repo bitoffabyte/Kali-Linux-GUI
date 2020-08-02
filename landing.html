@@ -24,12 +24,12 @@
                 <div class="dropdown">
                     <a class="nav-text left-text">Applications <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <p>About Me</p>
-                        <p>Terminal</p>
-                        <p>Linkedin</p>
-                        <p>Github</p>
-                        <p>Contact Me</p>
-                        <p>Credits</p>
+                        <p onclick="abtMe()">About Me</p>
+                        <p onclick="Terminalon()">Terminal</p>
+                        <p onclick="linkedin()">Linkedin</p>
+                        <p onclick="github()">Github</p>
+                        <p onclick="contact()">Contact Me</p>
+                        <p onclick="credits()">Credits</p>
                     </div>
                 </div>
                 <p id='date' class="center-text" align=center></p>
@@ -41,12 +41,12 @@
 
 
         <div class="left-nav">
-            <p><img class="left-nav-item" src="avatar.png"></p>
-            <p><img class="left-nav-item" src="Untitled.png"></p>
-            <p><img class="left-nav-item" src="linkedin.png"></p>
-            <p><img class="left-nav-item" src="github.png"></p>
-            <p><img class="left-nav-item" src="contactme.svg"></p>
-            <p><img class="left-nav-item" src="credits.png"></p>
+            <p onclick="abtMe()"><img class="left-nav-item" src="avatar.png"></p>
+            <p onclick="Terminalonn()"><img class="left-nav-item" src="Untitled.png"></p>
+            <p onclick="linkedin()"><img class="left-nav-item" src="linkedin.png"></p>
+            <p onclick="github()"><img class="left-nav-item" src="github.png"></p>
+            <p onclick="contact()"><img class="left-nav-item" src="contactme.svg"></p>
+            <p onclick="credits()"><img class="left-nav-item" src="credits.png"></p>
 
 
 
@@ -63,9 +63,9 @@
 
             </div>
             <div id='fakeMenu2'>
-                files
-                clear
-                help
+                <p class='fmic' onclick="comm('ls',true)">files</p>
+                <p class='fmic' onclick="comm('clear',true)">clear</p>
+                <p class='fmic' onclick="comm('help',true)">help</p>
 
             </div>
 
@@ -76,7 +76,7 @@
                     </div>
                     <div class="line">
                         <span id="path">guest@user:~$</span>
-                        <input type="text" id="input" onkeydown="comm()">
+                        <input type="text" id="input" onkeydown="comm()" autocomplete="off">
                         </line>
                     </div>
                 </div>
