@@ -63,7 +63,14 @@ let historyCommands = '';
 let clText = 'guest@user:~$'//this should be changed
 console.log(his)
 
+const scrollToBot = () => {
+    document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
+    document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
+    document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
 
+    console.log("scroll")
+
+}
 const comm = (ele) => {
     if (event.key === 'Enter') {
         let command = textInput.value;
@@ -78,6 +85,7 @@ const comm = (ele) => {
         }
         // console.log(historyCommands)
         his.innerHTML = historyCommands;
+        document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
     }
 }
 const nonSudo = (w) => {
@@ -88,6 +96,7 @@ const commandFunction = (c) => {
         for (let i = 0; i < listOfCommands.length; i++) {
             historyCommands += "<br>" + listOfCommands[i] + " : " + commandInfo[listOfCommands[i]];
             console.log(listOfCommands[i])
+
         }
     }
     if (c === 'clear') {
@@ -129,9 +138,12 @@ const commandFunction = (c) => {
     if (c == 'fork') {
         historyCommands += "Repo will be added soon"
     }
+
+    scrollToBot()
 }
 const foc = () => {
     textInput.focus()
+    console.log("Focus")
 }
 
 

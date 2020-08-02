@@ -7,7 +7,7 @@ html, body{
     margin: 0;
     padding: 0;
     background-color: #2f2f2f;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     background-image: url("1301120.jpg");
     background-position: center center;
     background-repeat: no-repeat;
@@ -16,7 +16,6 @@ html, body{
     font-family: 'Fira Code', monospace;
     overflow: hidden;
 }
-
 
 .nav-text{
 	color:white;
@@ -298,3 +297,5 @@ html, body{
             font-size: 250%;
         }
     }
+
+
