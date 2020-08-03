@@ -1,6 +1,6 @@
-let welcomeText = "Hello This is a sample welcome page\nTemplate created by R Narayan\nYou can continue by signing in as guest."
+let welcomeText = "Hello This is a sample welcome page\nTemplate created by R Narayan\nYou can continue by signing in as guest.";
 // You can give your oqn welcome text here no need for my name
-let delay = 50//delay in ms
+let delay = 50;//delay in ms
 let listOfCommands = ['help', 'clear', 'ls', 'cat', 'date', 'cd', 'mv', 'rm', 'rmdir', 'touch', 'flag', 'fork', 'sudo'];
 let commandInfo = {
     'help': "lists all the commands",//done
@@ -14,12 +14,12 @@ let commandInfo = {
     "rmdir": "Remove directory, this command will only work if the folders are empty.",//done
     "touch": "Change file timestamps.If the file doesn't exist, it's created an empty one.",
     "sudo": "Execute a command as the superuser.<br><br>",
-    'flag': "Submit a flag",
+    'flag': "Check it out :)",
     'fork': "Fork this repository"
 }
 
-let arrowIndex = -1
-let history = []
+let arrowIndex = -1;
+let history = [];
 let listOfFiles = {
     // If you want to add a website link use the anchor tab like in credits, href points to the url, you can give any text between<a></a>
     "About_Me.txt": () => {
@@ -41,86 +41,75 @@ let listOfFiles = {
         historyCommands += "Created by: R Narayan<br><a href = 'https://github.com/rootnarayan'>https://github.com/rootnarayan</a><br>"
 
     }
-}
+};
 
-const listOfAuto = [...listOfCommands]
-const listofAutos = [...Object.keys(listOfFiles).map(i => ("cat " + i))]
+const listOfAuto = [...listOfCommands];
+const listofAutos = [...Object.keys(listOfFiles).map(i => ("cat " + i))];
 
 // Navbar Date
-let d = new Date()
-days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
-let day = days[d.getDay()]
+let d = new Date();
+days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+let day = days[d.getDay()];
 let hr = d.getHours();
 let min = d.getMinutes();
 let time = hr + ":" + min;
-document.getElementById("date").innerText = days[d.getDay()] + " " + (d.getHours() < 10 ? '0' : '') + d.getHours() + ":" + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes()
+document.getElementById("date").innerText = days[d.getDay()] + " " + (d.getHours() < 10 ? '0' : '') + d.getHours() + ":" + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
 
 
 // Terminal Commands
-let ton = true
+let ton = true;
 const Terminalon = () => {
-    document.querySelector("#ter").style.display = "block"
-    foc()
-    ton = true
+    document.querySelector("#ter").style.display = "block";
+    foc();
+    ton = true;
 }
 const Terminalonn = () => {
     if (ton) {
-        document.querySelector("#ter").style.display = "none"
-        ton = false
+        document.querySelector("#ter").style.display = "none";
+        ton = false;
 
     }
     else {
-        document.querySelector("#ter").style.display = "block"
-        ton = true
+        document.querySelector("#ter").style.display = "block";
+        ton = true;
 
     }
-    foc()
+    foc();
 }
 // setInterval()
 let his = document.getElementById("history");
 let textInput = document.querySelector("#input");
 
-textInput.focus()
+textInput.focus();
 
-document.querySelector(".terminal").scrollTo(0, 0)
-let historyCommands = ""
-let clText = '<span id = "path">guest@user:~$</span>'//this should be changed
+document.querySelector(".terminal").scrollTo(0, 0);
+let historyCommands = "";
+let clText = '<span id = "path">guest@user:~$</span>';//this should be changed
 
 
 const autoFill = (txt) => {
-    let ch = false
+    let ch = false;
     listOfAuto.some(i => {
         if (i.substr(0, txt.length).toUpperCase() == txt.substr(0, txt.length).toUpperCase() && i.length != txt.length && txt != '') {
-            textInput.focus()
-            textInput.value = i
-            textInput.focus()
-            ch = true
+            textInput.focus();
+            textInput.value = i;
+            textInput.focus();
+            ch = true;
         }
     })
     if (!ch) {
         listofAutos.some(i => {
             if (i.substr(0, txt.length).toUpperCase() == txt.substr(0, txt.length).toUpperCase() && i.length != txt.length && txt != '') {
-                textInput.focus()
-                textInput.value = i
-                textInput.focus()
+                textInput.focus();
+                textInput.value = i;
+                textInput.focus();
             }
         })
     }
 }
 
 const scrollToBot = () => {
-    document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
-}
-function moveCursorToEnd() {
-    var el = document.querySelector("#input");
-    el.focus()
-    if (typeof el.selectionStart == "number") {
-        el.selectionStart = el.selectionEnd = el.value.length;
-    } else if (typeof el.createTextRange != "undefined") {
-        var range = el.createTextRange();
-        range.collapse(false);
-        range.select();
-    }
+    document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight);
 }
 const comm = (ele, yn = false) => {
     if (yn) {
@@ -134,7 +123,7 @@ const comm = (ele, yn = false) => {
             historyCommands += "<br>'" + command + "'" + " is not a recognized command<br> type 'help' to see the list of commands<br><br>";
         }
         his.innerHTML = historyCommands;
-        document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
+        document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight);
     }
     else if (event.key === 'Enter') {
         let command = textInput.value;
@@ -147,43 +136,42 @@ const comm = (ele, yn = false) => {
             if (command != '')
                 historyCommands += "<br>'" + command + "'" + " is not a recognized command<br> type 'help' to see the list of commands<br><br>";
             else
-                historyCommands += "<br>"
+                historyCommands += "<br>";
         }
         his.innerHTML = historyCommands;
-        document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
-        history.unshift(command)
+        document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight);
+        history.unshift(command);
     }
     else if (event.key == 'Tab') {
-        textInput.focus()
-        foc()
-        autoFill(textInput.value)
-        foc()
+        textInput.focus();
+        foc();
+        autoFill(textInput.value);
+        foc();
     }
     else if (event.key == "ArrowDown") {
         if (arrowIndex > 0) {
-            arrowIndex--
-            event.key = ""
-            document.querySelector("button").focus()
-            textInput.value = history[arrowIndex]
-            moveCursorToEnd()
+            arrowIndex--;
+            event.key = "";
+            document.querySelector("button").focus();
+            textInput.value = history[arrowIndex];
 
         }
     }
     else if (event.key == "ArrowUp") {
         if (arrowIndex < history.length - 1) {
-            event.key = ""
-            arrowIndex++
-            document.querySelector("button").focus()
+            event.key = "";
+            arrowIndex++;
+            document.querySelector("button").focus();
 
-            textInput.value = history[arrowIndex]
-            moveCursorToEnd()
+            textInput.value = history[arrowIndex];
+            moveCursorToEnd();
 
         }
     }
-    console.log(history)
-    console.log(arrowIndex)
+    console.log(history);
+    console.log(arrowIndex);
 
-    textInput.focus()
+    textInput.focus();
 
 }
 
@@ -192,49 +180,62 @@ const comm = (ele, yn = false) => {
 
 //ADD MORE FILES HERE
 const abtMe = () => {
-    Terminalon()
+    Terminalon();
     setTimeout(() => comm("cat About_Me.txt", true), 100);
-    textInput.focus()
+    textInput.focus();
 }
 const linkedin = () => {
-    Terminalon()
+    Terminalon();
     setTimeout(() => comm("cat Linkedin.txt", true), 100);
-    textInput.focus()
+    textInput.focus();
 }
 const github = () => {
-    Terminalon()
+    Terminalon();
     setTimeout(() => comm("cat Github.txt", true), 100);
-    textInput.focus()
+    textInput.focus();
 }
 const contact = () => {
-    Terminalon()
+    Terminalon();
     setTimeout(() => comm("cat Contact_Me.txt", true), 100);
-    textInput.focus()
+    textInput.focus();
 }
 const credits = () => {
-    Terminalon()
+    Terminalon();
     setTimeout(() => comm("cat Credits.txt", true), 100);
-    textInput.focus()
+    textInput.focus();
 }
 const nonSudo = (w) => {
-    historyCommands += "Unable to '" + w + "', Permission Denied!<br>"
+    historyCommands += "Unable to '" + w + "', Permission Denied!<br>";
 }
 
 
+String.prototype.toEncodedString = function () { var ostr = this.toString().replace(/\s+/g, ''); if (ostr.length < 8) { alert("Password must be at least 8 characters long with no spaces."); return null; }; var x, nstr = '', len = ostr.length; for (x = 0; x < len; ++x) { nstr += (255 - ostr.charCodeAt(x)).toString(36).toUpperCase().toPaddedString(2, '0'); }; return nstr; };
+String.prototype.fromEncodedString = function () { var ostr = this.toString(); var x, nstr = '', len = ostr.length; for (x = 0; x < len; x += 2) { nstr += String.fromCharCode(255 - parseInt(ostr.substr(x, 2), 36)); }; return nstr; };
+Number.prototype.toPaddedString = function (len, pad) { len = (len) ? Number(len) : 2; if (isNaN(len)) { alert("Padded String 'length' argument is not numeric."); return null; }; var dflt = (isNaN(this.toString())) ? " " : "0"; pad = (pad) ? pad.toString().substr(0, 1) : dflt; var str = this.toString(); if (dflt == "0") { while (str.length < len) str = pad + str; } else { while (str.length < len) str += pad; }; return str; };
+String.prototype.toPaddedString = Number.prototype.toPaddedString;
 
+const flag = (s) => {
+    console.log(s)
+    if (s[1].toEncodedString() == "3X40403V414E3X4E3Q4E413O4O5R4O4G3Q5R4Q4G475N3T5O4G495R3U4X574G3V475O4G555Q5N484G54543M") {
+        historyCommands += "<br>Nice!!"
+        historyCommands += `<br>GG you have found the flag`
+    }
+    else {
+        historyCommands += "<br>Sorry Wrong flag, Try again"
+    }
 
-
+}
 
 
 
 const commandFunction = (c) => {
     if (c == 'help') {
-        historyCommands += "<br>" + "Here are a list of commands"
+        historyCommands += "<br>" + "Here are a list of commands";
         for (let i = 0; i < listOfCommands.length; i++) {
             historyCommands += "<br>" + listOfCommands[i] + " : " + commandInfo[listOfCommands[i]];
 
         }
-        historyCommands += "Press Tab for Autofill<br>Use arrow keys to get to past commands"
+        historyCommands += "Press Tab for Autofill<br>Use arrow keys to get to past commands";
     }
     if (c == 'clear') {
         historyCommands = "";
@@ -243,58 +244,62 @@ const commandFunction = (c) => {
     let s = c.split(" ")
     if (c == 'ls') {
         Object.keys(listOfFiles).map(i => {
-            historyCommands += i + "<br>"
+            historyCommands += i + "<br>";
         })
-        historyCommands += "<br>"
+        historyCommands += "<br>";
     }
     if (s[0] == 'cat') {
-        let file = s[1]
+        let file = s[1];
         if (Object.keys(listOfFiles).includes(file)) {
-            listOfFiles[file]()
+            listOfFiles[file]();
         }
         else if (s.length = 1) {
-            historyCommands += "Please specify a file<br>"
+            historyCommands += "Please specify a file<br>";
 
         }
         else {
-            historyCommands += file + " not found"
+            historyCommands += file + " not found";
         }
     }
     if (c == 'date') {
-        let da = new Date()
-        historyCommands += days[da.getDay()] + " " + (da.getHours() < 10 ? '0' : '') + da.getHours() + ":" + (da.getMinutes() < 10 ? '0' : '') + da.getMinutes()
+        let da = new Date();
+        historyCommands += days[da.getDay()] + " " + (da.getHours() < 10 ? '0' : '') + da.getHours() + ":" + (da.getMinutes() < 10 ? '0' : '') + da.getMinutes();
 
     }
     if (c == 'cd' || c == 'rm' || c == 'mv' || c == 'rmdir' || c == 'touch' || c == 'sudo') {
-        nonSudo(c)
+        nonSudo(c);
     }
-    if (s[0] == 'flag') {
-        historyCommands += 'Flag submission will be added soon'
+    if (c == 'flag') {
+        historyCommands += "Hint: Counter Strike Source was such a nice game!, with amazing bases<br>To submit flag type 'flag rootnarayan{flag}'<br>flag is present in the same format";
+
+    }
+    else if (s[0] == 'flag') {
+        flag(s)
     }
     if (c == 'fork') {
-        historyCommands += "Repo will be added soon"
+        historyCommands += "Repo will be added soon<br>";
     }
 
-    scrollToBot()
+    scrollToBot();
 }
 const foc = () => {
-    textInput.focus()
+    textInput.focus();
 }
 
 
 
 
 document.getElementById("cl").addEventListener('click', () => {
-    comm("clear", true)
-    ton = false
-    document.querySelector("#ter").style.display = "none"
+    comm("clear", true);
+    ton = false;
+    document.querySelector("#ter").style.display = "none";
 })
 
 
 document.getElementById("min").addEventListener('click', () => {
 
-    ton = false
-    document.querySelector("#ter").style.display = "none"
+    ton = false;
+    document.querySelector("#ter").style.display = "none";
 })
 
 
@@ -357,51 +362,51 @@ const drag = (e) => {
     }
 }
 
-let m = false
-let fresh = false
+let m = false;
+let fresh = false;
 const maximize = (c) => {
-    document.querySelector("#ter").style.width = "99.5%"
-    document.querySelector("#ter").style.height = "100%"
-    document.querySelector(".terminal").style.width = "100%"
-    document.querySelector(".terminal").style.height = "83%"
-    document.querySelector(".terminal").style.paddingBottom = "100%"
+    document.querySelector("#ter").style.width = "99.5%";
+    document.querySelector("#ter").style.height = "100%";
+    document.querySelector(".terminal").style.width = "100%";
+    document.querySelector(".terminal").style.height = "83%";
+    document.querySelector(".terminal").style.paddingBottom = "100%";
 
-    document.querySelector("#fakeMenu").style.width = "100%"
-    document.querySelector("#fakeMenu2").style.width = "100%"
-    let y = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop)
+    document.querySelector("#fakeMenu").style.width = "100%";
+    document.querySelector("#fakeMenu2").style.width = "100%";
+    let y = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop);
     document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -15 + "%, 0)";
-    m = true
-    fresh = true
-    textInput.focus()
+    m = true;
+    fresh = true;
+    textInput.focus();
 }
 const minimize = () => {
-    document.querySelector("#ter").style.width = "50%"
-    document.querySelector("#ter").style.height = "50%"
-    document.querySelector(".terminal").style.width = "100%"
-    document.querySelector(".terminal").style.height = "100%"
-    document.querySelector("#fakeMenu").style.width = "100%"
-    document.querySelector("#fakeMenu2").style.width = "100%"
-    document.querySelector(".terminal").style.paddingBottom = "0%"
+    document.querySelector("#ter").style.width = "50%";
+    document.querySelector("#ter").style.height = "50%";
+    document.querySelector(".terminal").style.width = "100%";
+    document.querySelector(".terminal").style.height = "100%";
+    document.querySelector("#fakeMenu").style.width = "100%";
+    document.querySelector("#fakeMenu2").style.width = "100%";
+    document.querySelector(".terminal").style.paddingBottom = "0%";
 
     if (fresh) {
         document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -25 + "%, 0)";
-        fresh = false
+        fresh = false;
 
     }
 
-    m = false
-    document.getElementById('fakeMenu').style.position = "static"
-    document.getElementById('fakeMenu2').style.position = "static"
+    m = false;
+    document.getElementById('fakeMenu').style.position = "static";
+    document.getElementById('fakeMenu2').style.position = "static";
 }
 const setTranslate = (xPos, yPos, el) => {
     el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-    let coord = Math.floor(document.querySelector("#ter").getBoundingClientRect().top + document.documentElement.scrollTop)
-    let coord2 = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop)
+    let coord = Math.floor(document.querySelector("#ter").getBoundingClientRect().top + document.documentElement.scrollTop);
+    let coord2 = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop);
     if (coord <= coord2) {
-        maximize(coord2)
+        maximize(coord2);
     }
     else {
-        minimize()
+        minimize();
     }
 }
 container.addEventListener("touchstart", dragStart, false);
@@ -419,14 +424,14 @@ window.mobileCheck = function () {
 document.getElementById("max").addEventListener('click', () => {
     if (!mobileCheck()) {
         if (!m) {
-            maximize()
+            maximize();
         }
         else {
-            minimize()
+            minimize();
         }
     }
     else {
-        alert("resize not available on mobile")
+        alert("resize not available on mobile");
     }
 })
 
@@ -434,34 +439,33 @@ document.getElementById("max").addEventListener('click', () => {
 
 // Welcome screen
 const loginAuth = () => {
-    console.log(event.key)
+    console.log(event.key);
 
     if (event.key == "Enter") {
-        let un = event.target.value
+        let un = event.target.value;
 
         if (un == "guest") {
-            document.querySelector(".login").style.display = "none"
+            document.querySelector(".login").style.display = "none";
             // .hlog,.hlogg,.body
-            document.querySelector(".hlog").style.display = "block"
-            document.querySelector(".hlogg").style.display = "block"
-            document.querySelector(".body").style.display = "block"
+            document.querySelector(".hlog").style.display = "block";
+            document.querySelector(".hlogg").style.display = "block";
+            document.querySelector(".body").style.display = "block";
             ton = false
-            document.querySelector("#ter").style.display = "none"
+            document.querySelector("#ter").style.display = "none";
         }
         else {
-            document.getElementById("nn").style.display = "block"
+            document.getElementById("nn").style.display = "block";
         }
-
     }
 }
-document.getElementById("welcomeText").innerText = ""
+document.getElementById("welcomeText").innerText = "";
 
 let i = 0
 const del = () => {
     if (i < welcomeText.length) {
         var char = welcomeText.charAt(i);
-        var newLine = char === "\n"
-        document.getElementById("welcomeText").innerHTML += newLine ? "<br><br>" : char
+        var newLine = char === "\n";
+        document.getElementById("welcomeText").innerHTML += newLine ? "<br><br>" : char;
 
         i++;
         setTimeout(del, newLine ? delay * 2 : delay);
