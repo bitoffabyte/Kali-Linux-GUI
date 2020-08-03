@@ -1,4 +1,4 @@
-let welcomeText = "Hello This is a sample welcome page\nTemplate created by R Narayan\nYou can continue by signing in as guest.";
+let welcomeText = "Hello This is a sample welcome page\nTemplate created by R Narayan\nYou can continue by signing in with username guest.";
 // You can give your oqn welcome text here no need for my name
 let delay = 50;//delay in ms
 let listOfCommands = ['help', 'clear', 'ls', 'cat', 'date', 'cd', 'mv', 'rm', 'rmdir', 'touch', 'flag', 'fork', 'sudo'];
