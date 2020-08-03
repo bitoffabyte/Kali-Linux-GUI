@@ -20,7 +20,7 @@ html, body{
 .nav-text{
 	color:white;
 	font-size:1.2em;
-	margin:10px;
+	/* margin:10px; */
 }
 
 
@@ -258,20 +258,6 @@ html, body{
   }
 
   @media (max-width: 991px) {
-    #ter{
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    }
-    body{
-    }
-    .terminal{
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        }
     #fakeMenu,#fakeMenu2{
         width: 100%;
         /* top: 10%; */
@@ -292,7 +278,7 @@ html, body{
         margin-left: 0px;
         }
         #ter{
-        height: 100%;
+        height: 84%;
         width: 100%;
         top: 4%;
         left: 0;
@@ -300,6 +286,7 @@ html, body{
         .terminal{
         width: 100%;
         height: 100%;
+        padding-bottom: 7%;
         }
         body{
             overflow: auto;

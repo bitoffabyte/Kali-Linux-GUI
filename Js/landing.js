@@ -371,7 +371,6 @@ const maximize = (c) => {
     document.querySelector(".terminal").style.width = "100%";
     document.querySelector(".terminal").style.height = "83%";
     document.querySelector(".terminal").style.paddingBottom = "100%";
-
     document.querySelector("#fakeMenu").style.width = "100%";
     document.querySelector("#fakeMenu2").style.width = "100%";
     let y = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop);
