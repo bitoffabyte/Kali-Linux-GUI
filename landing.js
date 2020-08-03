@@ -1,4 +1,47 @@
-// document.write(unescape('%3C%6C%69%6E%6B%20%72%65%6C%3D%22%73%74%79%6C%65%73%68%65%65%74%22%20%68%72%65%66%3D%22%73%74%79%6C%65%73%2F%63%73%73%2E%63%73%73%22%20%74%79%70%65%3D%22%74%65%78%74%2F%63%73%73%22%20%6D%65%64%69%61%3D%22%73%63%72%65%65%6E%22%20%2F%3E%0A%3C%73%63%72%69%70%74%20%74%79%70%65%3D%22%74%65%78%74%2F%6A%61%76%61%73%63%72%69%70%74%22%20%73%72%63%3D%22%73%63%72%69%70%74%2F%6A%73%2E%6A%73%22%20%6C%61%6E%67%75%61%67%65%3D%22%6A%61%76%61%73%63%72%69%70%74%22%3E%3C%2F%73%63%72%69%70%74%3E%0A'));
+let welcomeText = "Hello This is a sample welcome page\nTemplate created by R Narayan\nYou can continue by signing in as guest."
+// You can give your oqn welcome text here no need for my name
+let delay = 50//delay in ms
+let listOfCommands = ['help', 'clear', 'ls', 'cat', 'date', 'cd', 'mv', 'rm', 'rmdir', 'touch', 'flag', 'fork', 'sudo'];
+let commandInfo = {
+    'help': "lists all the commands",//done
+    'ls': "List information about the files and folders.",//done
+    "cat": "Read FILE(s) content and print it to the standard output(screen).",//done
+    "date": "Print the system date and time.",//done
+    "clear": "Clear the terminal screen.",//done
+    "cd": "Change the current working directory.",//done
+    "mv": "Move(rename) files.",//done
+    "rm": "Remove files or directories.",//done
+    "rmdir": "Remove directory, this command will only work if the folders are empty.",//done
+    "touch": "Change file timestamps.If the file doesn't exist, it's created an empty one.",
+    "sudo": "Execute a command as the superuser.<br><br>",
+    'flag': "Submit a flag",
+    'fork': "Fork this repository"
+}
+let listOfFiles = {
+    // If you want to add a website link use the anchor tab like in credits, href points to the url, you can give any text between<a></a>
+    "About_Me.txt": () => {
+        historyCommands += "Hi somethings about me<br>bla bla bla<br><br>"
+    },
+    "Contact_Me.txt": () => {
+        historyCommands += "My Contact info<br><br>"
+
+    },
+    "Github.txt": () => {
+        historyCommands += "github link<br><br>"
+
+    },
+    "Linkedin.txt": () => {
+        historyCommands += "my linkedin link<br><br>"
+
+    },
+    "Credits.txt": () => {
+        historyCommands += "Created by: R Narayan<br><a href = 'https://github.com/rootnarayan'>https://github.com/rootnarayan</a><br>"
+
+    }
+}
+
+const listOfAuto = [...listOfCommands]
+const listofAutos = [...Object.keys(listOfFiles).map(i => ("cat " + i))]
 
 // Navbar Date
 let d = new Date()
@@ -7,12 +50,11 @@ let day = days[d.getDay()]
 let hr = d.getHours();
 let min = d.getMinutes();
 let time = hr + ":" + min;
-document.getElementById("date").innerText = day + " " + time
+document.getElementById("date").innerText = days[d.getDay()] + " " + (d.getHours() < 10 ? '0' : '') + d.getHours() + ":" + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes()
 
 
 // Terminal Commands
 let ton = true
-
 const Terminalon = () => {
     document.querySelector("#ter").style.display = "block"
     foc()
@@ -30,71 +72,44 @@ const Terminalonn = () => {
 
     }
 }
-
-let listOfCommands = ['help', 'clear', 'ls', 'cat', 'date', 'cd', 'mv', 'rm', 'rmdir', 'touch', 'flag', 'fork', 'sudo'];
+// setInterval()
 let his = document.getElementById("history");
 let textInput = document.querySelector("#input");
 
 textInput.focus()
 
-// setInterval(document.querySelector(".body").scrollTo(0, document.querySelector(".terminal").scrollHeight), 0)
 document.querySelector(".terminal").scrollTo(0, 0)
+let historyCommands = ""
+let clText = '<span id = "path">guest@user:~$</span>'//this should be changed
 
 
-let commandInfo = {
-    'help': "lists all the commands",//done
-    'ls': "List information about the files and folders.",//done
-    "cat": "Read FILE(s) content and print it to the standard output(screen).",//done
-    "date": "Print the system date and time.",//done
-    "clear": "Clear the terminal screen.",//done
-    "cd": "Change the current working directory.",//done
-    "mv": "Move(rename) files.",//done
-    "rm": "Remove files or directories.",//done
-    "rmdir": "Remove directory, this command will only work if the folders are empty.",//done
-    "touch": "Change file timestamps.If the file doesn't exist, it's created an empty one.",
-    "sudo": "Execute a command as the superuser.<br><br>",
-    'flag': "Submit a flag",
-    'fork': "Fork this repository"
-}
-
-let listOfFiles = {
-    "About_Me.txt": () => {
-        historyCommands += "Hi somethings about me<br>bla bla bla<br><br>"
-    },
-    "Contact_Me.txt": () => {
-        historyCommands += "My Contact info<br><br>"
-
-    },
-    "Github.txt": () => {
-        historyCommands += "github link<br><br>"
-
-    },
-    "Linkedin.txt": () => {
-        historyCommands += "my linkedin link<br><br>"
-
-    },
-    "Credits.txt": () => {
-        historyCommands += "Created by: rootnarayan<br><br>"
-
+const autoFill = (txt) => {
+    let ch = false
+    listOfAuto.some(i => {
+        if (i.substr(0, txt.length).toUpperCase() == txt.substr(0, txt.length).toUpperCase() && i.length != txt.length && txt != '') {
+            textInput.focus()
+            textInput.value = i
+            textInput.focus()
+            ch = true
+        }
+    })
+    if (!ch) {
+        listofAutos.some(i => {
+            if (i.substr(0, txt.length).toUpperCase() == txt.substr(0, txt.length).toUpperCase() && i.length != txt.length && txt != '') {
+                textInput.focus()
+                textInput.value = i
+                textInput.focus()
+            }
+        })
     }
 }
 
-let historyCommands = '';
-let clText = '<span id = "path">guest@user:~$</span>'//this should be changed
-console.log(his)
-
 const scrollToBot = () => {
     document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
-    document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
-    document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
-
-    console.log("scroll")
-
 }
 const comm = (ele, yn = false) => {
     if (yn) {
         let command = ele;
-        console.log(command);
         textInput.value = "";
         historyCommands += (clText + '<p class = "aaa"> ' + command + '</p>');
         if (listOfCommands.includes(command) || listOfCommands.includes(command.split(" ")[0])) {
@@ -103,13 +118,11 @@ const comm = (ele, yn = false) => {
         else {
             historyCommands += "<br>'" + command + "'" + " is not a recognized command<br> type 'help' to see the list of commands<br><br>";
         }
-        // console.log(historyCommands)
         his.innerHTML = historyCommands;
         document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
     }
     else if (event.key === 'Enter') {
         let command = textInput.value;
-        console.log(command);
         textInput.value = "";
         historyCommands += (clText + '<p class = "aaa"> ' + command + '</p>');
         if (listOfCommands.includes(command) || listOfCommands.includes(command.split(" ")[0])) {
@@ -121,12 +134,24 @@ const comm = (ele, yn = false) => {
             else
                 historyCommands += "<br>"
         }
-        // console.log(historyCommands)
         his.innerHTML = historyCommands;
         document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
     }
+    else if (event.key == 'Tab') {
+        textInput.focus()
+        foc()
+        autoFill(textInput.value)
+        foc()
+    }
+    textInput.focus()
+
 
 }
+
+
+
+
+//ADD MORE FILES HERE
 const abtMe = () => {
     Terminalon()
     setTimeout(() => comm("cat About_Me.txt", true), 100);
@@ -155,19 +180,25 @@ const credits = () => {
 const nonSudo = (w) => {
     historyCommands += "Unable to '" + w + "', Permission Denied!<br>"
 }
+
+
+
+
+
+
+
+
 const commandFunction = (c) => {
     if (c == 'help') {
         historyCommands += "<br>" + "Here are a list of commands"
         for (let i = 0; i < listOfCommands.length; i++) {
             historyCommands += "<br>" + listOfCommands[i] + " : " + commandInfo[listOfCommands[i]];
-            console.log(listOfCommands[i])
 
         }
     }
     if (c == 'clear') {
         historyCommands = "";
         textInput.value = "";
-        console.log("CCLLEAR")
     }
     let s = c.split(" ")
     if (c == 'ls') {
@@ -208,13 +239,11 @@ const commandFunction = (c) => {
 }
 const foc = () => {
     textInput.focus()
-    console.log("Focus")
 }
 
 
 
 
-// nav control 
 document.getElementById("cl").addEventListener('click', () => {
     comm("clear", true)
     ton = false
@@ -224,13 +253,12 @@ document.getElementById("cl").addEventListener('click', () => {
 
 document.getElementById("min").addEventListener('click', () => {
 
-    // comm("clear", true)
     ton = false
     document.querySelector("#ter").style.display = "none"
 })
 
 
-
+// Code for dragging terminal around
 
 let dragItem = document.querySelector("#fakeMenu");
 let container = document.querySelector("body");
@@ -276,7 +304,6 @@ const drag = (e) => {
         if (e.type === "touchmove") {
             currentX = e.touches[0].clientX - initialX;
             currentY = e.touches[0].clientY - initialY;
-            console.log("123")
 
         } else {
             currentX = e.clientX - initialX;
@@ -301,19 +328,11 @@ const maximize = (c) => {
 
     document.querySelector("#fakeMenu").style.width = "100%"
     document.querySelector("#fakeMenu2").style.width = "100%"
-    console.log(c)
     let y = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop)
     document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -15 + "%, 0)";
     m = true
     fresh = true
-    // dragEnd()
     textInput.focus()
-    // document.getElementById('fakeMenu').style.position = "absolute"
-    // document.getElementById('fakeMenu').style.top = "0"
-    // document.getElementById('fakeMenu2').style.position = "absolute"
-    // document.getElementById('fakeMenu2').style.top = "4%"
-
-
 }
 const minimize = () => {
     document.querySelector("#ter").style.width = "50%"
@@ -326,24 +345,18 @@ const minimize = () => {
 
     if (fresh) {
         document.querySelector("#ter").style.transform = "translate3d(" + -25 + "%, " + -25 + "%, 0)";
-        console.log("SDSDSD")
         fresh = false
 
     }
-    // dragStart()
 
     m = false
     document.getElementById('fakeMenu').style.position = "static"
-    // document.getElementById('fakeMenu').style.top = "0"
     document.getElementById('fakeMenu2').style.position = "static"
-    // document.getElementById('fakeMenu2').style.top = "4%"
 }
 const setTranslate = (xPos, yPos, el) => {
     el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
-    // console.log(xPos)
     let coord = Math.floor(document.querySelector("#ter").getBoundingClientRect().top + document.documentElement.scrollTop)
     let coord2 = Math.floor(document.querySelector(".navbar").getBoundingClientRect().bottom + document.documentElement.scrollTop)
-    // console.log(coord1)
     if (coord <= coord2) {
         maximize(coord2)
     }
@@ -377,5 +390,40 @@ document.getElementById("max").addEventListener('click', () => {
     }
 })
 
+
+
+// Welcome screen
+const loginAuth = () => {
+    if (event.key == "Enter") {
+        let un = event.target.value
+        if (un == "guest") {
+            document.querySelector(".login").style.display = "none"
+            // .hlog,.hlogg,.body
+            document.querySelector(".hlog").style.display = "block"
+            document.querySelector(".hlogg").style.display = "block"
+            document.querySelector(".body").style.display = "block"
+            ton = false
+            document.querySelector("#ter").style.display = "none"
+        }
+        else {
+            document.getElementById("nn").style.display = "block"
+        }
+
+    }
+}
+document.getElementById("welcomeText").innerText = ""
+
+let i = 0
+const del = () => {
+    if (i < welcomeText.length) {
+        var char = welcomeText.charAt(i);
+        var newLine = char === "\n"
+        document.getElementById("welcomeText").innerHTML += newLine ? "<br><br>" : char
+
+        i++;
+        setTimeout(del, newLine ? delay * 2 : delay);
+    }
+}
+del()
 
 

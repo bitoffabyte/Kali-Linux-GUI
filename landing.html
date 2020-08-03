@@ -16,29 +16,51 @@
 </head>
 
 <body>
-    <div class="body">
 
-        <div class="kl">
-            <div class="navbar">
+    <div class="kl">
+        <div class="navbar">
 
-                <div class="dropdown">
-                    <a class="nav-text left-text">Applications <i class="fas fa-caret-down"></i></a>
-                    <div class="dropdown-content">
-                        <p onclick="abtMe()">About Me</p>
-                        <p onclick="Terminalon()">Terminal</p>
-                        <p onclick="linkedin()">Linkedin</p>
-                        <p onclick="github()">Github</p>
-                        <p onclick="contact()">Contact Me</p>
-                        <p onclick="credits()">Credits</p>
-                    </div>
+            <div class="dropdown">
+                <a class="nav-text left-text hlog">Applications <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <p onclick="abtMe()">About Me</p>
+                    <p onclick="Terminalon()">Terminal</p>
+                    <p onclick="linkedin()">Linkedin</p>
+                    <p onclick="github()">Github</p>
+                    <p onclick="contact()">Contact Me</p>
+                    <p onclick="credits()">Credits</p>
                 </div>
-                <p id='date' class="center-text" align=center></p>
+            </div>
+            <p id='date' class="center-text" align=center></p>
 
-                <a class="nav-text right-text"><i class="fas fa-comment-alt"></i> guest</a>
-                <a class="nav-text right-text"><i class="fas fa-network-wired" style="color:lightblue;"></i></a>
+            <a class="nav-text right-text hlogg"><i class="fas fa-comment-alt"></i> guest</a>
+            <a class="nav-text right-text"><i class="fas fa-network-wired" style="color:lightblue;"></i></a>
+        </div>
+    </div>
+
+
+    <div class="login">
+
+        <div class="signin wel">
+            <div class="sinputs well">
+                <p class="wel" id="welcomeText">
+
+                </p>
             </div>
         </div>
+        <div class="signin dd">
+            <div class="sinputs">
+                <p>Username:</p>
+                <input type="text" onkeydown="loginAuth()">
+                <p id='nn'>Invalid Username (username is case sensitive)</p>
+            </div>
+        </div>
+    </div>
 
+
+
+
+    <div class="body">
 
         <div class="left-nav">
             <p onclick="abtMe()"><img class="left-nav-item" src="avatar.png"></p>
@@ -76,12 +98,14 @@
                     </div>
                     <div class="line">
                         <span id="path">guest@user:~$</span>
-                        <input type="text" id="input" onkeydown="comm()" autocomplete="off">
+                        <input type="text" id="input" onkeydown="comm()" autocomplete="off" autocorrect="off"
+                            data-gramm_editor="false" spellcheck="false">
                         </line>
                     </div>
                 </div>
 
             </div>
+            <button onfocus="foc()"></button>
         </div>
     </div>
     <script src="landing.js"></script>
