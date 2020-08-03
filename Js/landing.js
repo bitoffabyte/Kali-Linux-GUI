@@ -15,7 +15,8 @@ let commandInfo = {
     "touch": "Change file timestamps.If the file doesn't exist, it's created an empty one.",
     "sudo": "Execute a command as the superuser.<br><br>",
     'flag': "Check it out :)",
-    'fork': "Fork this repository"
+    'fork': "Fork this repository",
+
 }
 
 let arrowIndex = -1;
@@ -23,22 +24,22 @@ let history = [];
 let listOfFiles = {
     // If you want to add a website link use the anchor tab like in credits, href points to the url, you can give any text between<a></a>
     "About_Me.txt": () => {
-        historyCommands += "Hi somethings about me<br>bla bla bla<br><br>"
+        historyCommands += "Hi I'm Narayan<br><br>"
     },
     "Contact_Me.txt": () => {
-        historyCommands += "My Contact info<br><br>"
+        historyCommands += "You can get in touch with me in any social media websites, i go by @rootnarayan<br><br>"
 
     },
     "Github.txt": () => {
-        historyCommands += "github link<br><br>"
+        historyCommands += "<a href = 'https://github.com/rootnarayan' target='_blank'>https://github.com/rootnarayan</a><br><br>"
 
     },
     "Linkedin.txt": () => {
-        historyCommands += "my linkedin link<br><br>"
+        historyCommands += "<a href = 'https://www.linkedin.com/in/r-narayan-37644518b/' target='_blank'>https://www.linkedin.com/in/r-narayan-37644518b/</a><br><br>"
 
     },
     "Credits.txt": () => {
-        historyCommands += "Created by: R Narayan<br><a href = 'https://github.com/rootnarayan'>https://github.com/rootnarayan</a><br>"
+        historyCommands += "Created by: R Narayan<br><a href = 'https://github.com/rootnarayan' target='_blank'>https://github.com/rootnarayan</a><br>"
 
     }
 };
@@ -277,7 +278,7 @@ const commandFunction = (c) => {
         flag(s)
     }
     if (c == 'fork') {
-        historyCommands += "Repo will be added soon<br>";
+        historyCommands += "You can fork this website <br><a href ='https://github.com/rootnarayan/Kali-Linux-GUI' target='_blank'>here</a>";
     }
 
     scrollToBot();
