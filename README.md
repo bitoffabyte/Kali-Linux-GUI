@@ -23,7 +23,7 @@ This is a template website which can be customized to your needs.Also has a hidd
 * Add games(maybe)
 * Add more flags
 * Have a leaderboard for the mini noob ctf :sweat_smile:
-
+* Convert this to a react app
 
 
 ### Resources
