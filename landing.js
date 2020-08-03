@@ -217,11 +217,11 @@ String.prototype.toPaddedString = Number.prototype.toPaddedString;
 const flag = (s) => {
     console.log(s)
     if (s[1].toEncodedString() == "3X40403V414E3X4E3Q4E413O4O5R4O4G3Q5R4Q4G475N3T5O4G495R3U4X574G3V475O4G555Q5N484G54543M") {
-        historyCommands += "<br>Nice!!"
-        historyCommands += `<br>GG you have found the flag`
+        historyCommands += "<br>Nice!!";
+        historyCommands += `<br>GG you have found the flag`;
     }
     else {
-        historyCommands += "<br>Sorry Wrong flag, Try again"
+        historyCommands += "<br>Sorry Wrong flag, Try again";
     }
 
 }
