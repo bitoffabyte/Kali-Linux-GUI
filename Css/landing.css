@@ -8,7 +8,7 @@ html, body{
     padding: 0;
     background-color: #2f2f2f;
     /* overflow-x: hidden; */
-    background-image: url("1301120.jpg");
+    background-image: url("../Assets/1301120.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
