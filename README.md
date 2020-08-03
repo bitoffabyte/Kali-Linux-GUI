@@ -14,7 +14,7 @@ This is a template website which can be customized to your needs.Also has a hidd
 * Easily customizable template
 * `TAB` autocompletion support
 * A few linux-like possible commands
-* USe Arrow keys to go through history of previous commands in terminal
+* Use `Arrow keys` to go through history of previous commands in terminal
 * Easily acessible side-nav ui and a command line ui
 * Simple website with vanilla js, without external libraries :sunglasses:
 
