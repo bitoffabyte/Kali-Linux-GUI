@@ -20,9 +20,9 @@ This is a template website which can be customized to your needs.Also has a hidd
 
 ### Future (TODO) functionalities
 
-*Add games(maybe)
-*Add more flags
-*have a leaderboard for the mini noob ctf :sweat_smile:
+* Add games(maybe)
+* Add more flags
+* Have a leaderboard for the mini noob ctf :sweat_smile:
 
 
 
