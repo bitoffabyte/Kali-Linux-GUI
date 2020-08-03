@@ -17,6 +17,9 @@ let commandInfo = {
     'flag': "Submit a flag",
     'fork': "Fork this repository"
 }
+
+let arrowIndex = -1
+let history = []
 let listOfFiles = {
     // If you want to add a website link use the anchor tab like in credits, href points to the url, you can give any text between<a></a>
     "About_Me.txt": () => {
@@ -71,6 +74,7 @@ const Terminalonn = () => {
         ton = true
 
     }
+    foc()
 }
 // setInterval()
 let his = document.getElementById("history");
@@ -107,6 +111,17 @@ const autoFill = (txt) => {
 const scrollToBot = () => {
     document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
 }
+function moveCursorToEnd() {
+    var el = document.querySelector("#input");
+    el.focus()
+    if (typeof el.selectionStart == "number") {
+        el.selectionStart = el.selectionEnd = el.value.length;
+    } else if (typeof el.createTextRange != "undefined") {
+        var range = el.createTextRange();
+        range.collapse(false);
+        range.select();
+    }
+}
 const comm = (ele, yn = false) => {
     if (yn) {
         let command = ele;
@@ -136,6 +151,7 @@ const comm = (ele, yn = false) => {
         }
         his.innerHTML = historyCommands;
         document.querySelector(".terminal").scrollTo(0, document.querySelector(".terminal").scrollHeight)
+        history.unshift(command)
     }
     else if (event.key == 'Tab') {
         textInput.focus()
@@ -143,8 +159,31 @@ const comm = (ele, yn = false) => {
         autoFill(textInput.value)
         foc()
     }
-    textInput.focus()
+    else if (event.key == "ArrowDown") {
+        if (arrowIndex > 0) {
+            arrowIndex--
+            event.key = ""
+            document.querySelector("button").focus()
+            textInput.value = history[arrowIndex]
+            moveCursorToEnd()
 
+        }
+    }
+    else if (event.key == "ArrowUp") {
+        if (arrowIndex < history.length - 1) {
+            event.key = ""
+            arrowIndex++
+            document.querySelector("button").focus()
+
+            textInput.value = history[arrowIndex]
+            moveCursorToEnd()
+
+        }
+    }
+    console.log(history)
+    console.log(arrowIndex)
+
+    textInput.focus()
 
 }
 
@@ -195,6 +234,7 @@ const commandFunction = (c) => {
             historyCommands += "<br>" + listOfCommands[i] + " : " + commandInfo[listOfCommands[i]];
 
         }
+        historyCommands += "Press Tab for Autofill<br>Use arrow keys to get to past commands"
     }
     if (c == 'clear') {
         historyCommands = "";
@@ -394,8 +434,11 @@ document.getElementById("max").addEventListener('click', () => {
 
 // Welcome screen
 const loginAuth = () => {
+    console.log(event.key)
+
     if (event.key == "Enter") {
         let un = event.target.value
+
         if (un == "guest") {
             document.querySelector(".login").style.display = "none"
             // .hlog,.hlogg,.body
