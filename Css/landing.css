@@ -403,6 +403,8 @@ html, body{
         padding: 0;
         
         padding: 3%;
+        padding-bottom: 5%;
+        top: 15%;
         /* background-color: #bbb; */
     }
     .sinputs{
