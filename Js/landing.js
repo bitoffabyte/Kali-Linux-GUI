@@ -84,8 +84,9 @@ let textInput = document.querySelector("#input");
 textInput.focus();
 
 document.querySelector(".terminal").scrollTo(0, 0);
-let historyCommands = "";
+let historyCommands = "Hello There, <br>This is just a template with a few eater eggs ;)<br>You can use the command line to interact, start out by typing 'help'<br>Or you can use the folder view";
 let clText = '<span id = "path">guest@user:~$</span>';//this should be changed
+his.innerHTML = historyCommands;
 
 
 const autoFill = (txt) => {
@@ -450,8 +451,7 @@ const loginAuth = () => {
             document.querySelector(".hlog").style.display = "block";
             document.querySelector(".hlogg").style.display = "block";
             document.querySelector(".body").style.display = "block";
-            ton = false
-            document.querySelector("#ter").style.display = "none";
+
         }
         else {
             document.getElementById("nn").style.display = "block";
