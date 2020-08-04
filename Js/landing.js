@@ -3,8 +3,9 @@ let welcomeText = "Hello This is a sample welcome page\nTemplate created by R Na
 let sss = welcomeText.replace("\n", "<br><br>")
 document.getElementById("welcomeText1").innerHTML = sss
 let delay = 50;//delay in ms
-const qw = document.getElementById("welcomeText1").offsetHeight + 100
 setInterval(() => {
+    const qw = document.getElementById("welcomeText1").offsetHeight + 100
+
     document.getElementById("welcomeText").style.height = qw + "px"
     console.log(qw)
 
