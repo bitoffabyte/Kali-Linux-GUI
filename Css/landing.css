@@ -353,8 +353,9 @@ html, body{
     width: 100%;
     height: 100%;
     background-color: #2a2d32;
-    overflow: scroll;
+    overflow: hidden;
     vertical-align: middle;
+    overflow: auto;
 
 }
 .signin{
@@ -364,12 +365,19 @@ html, body{
     /* background-color: black; */
     top: 30%;
     left: 35%;
-    height: 90%;
+    /* height: 90%; */
     color: #9da1a2;
     font-size: larger;
-    /* overflow: auto; */
+    /* overflow: scroll; */
 }
-
+.login::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+.login::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
 .signin input{
     background-color: #232427;
     color: #9da1a2;
@@ -379,7 +387,7 @@ html, body{
     height: 40px; 
 }
 .wel{
-    top: 20%;
+    /* top: 20%; */
     left: 35%;
     font-size: small;
     height: 50%;
@@ -392,45 +400,20 @@ html, body{
 }
 
 .txt{
-    height: 25%;
-    padding-bottom: 5%;
+    /* height: 25%; */
+    /* padding-bottom: 5%; */
 }
 .txtt{
-    position: fixed;
-}
-.tx{
-    position: fixed;
-    padding-bottom: 10%;
-    color: transparent;
-}
-.ll{
-    padding-top: 10%;
+    /* position: absolute; */
 }
 @media (max-width: 1300px) {
+
     .signin{
-        width: 94%;
-        left: 0;
-        margin: 0;
-        padding: 0;
-        padding: 3%;
-        padding-bottom: 5%;
-        top: 15%;
-        /* background-color: #bbb; */
+        width: 50%;
+    }
+}
+@media (max-width: 1300px) {
 
-    }
-    .txt{
-        height: 50%;
-        padding-bottom: 0%;
-    }
-
-    .wel{
-        height: 40%;
-    }
-    /* .txt{
-        height: 100%;
-    } */
-    .ll{
-    }
 }
 button{
     width: 0;
@@ -443,12 +426,8 @@ button{
 a{
     color: green;
 }
-@media (max-width: 350px) {
-    .txt{
-        height: 50%;
-        padding-bottom: 40%;
-    }
-    /* .ll{
-        margin-top: 50%;
-    } */
+
+#welcomeText1{
+    position: fixed;
+    z-index: -1;
 }
