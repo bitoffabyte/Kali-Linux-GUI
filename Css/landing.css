@@ -353,7 +353,7 @@ html, body{
     width: 100%;
     height: 100%;
     background-color: #2a2d32;
-    overflow: hidden;
+    /* overflow: hidden; */
     vertical-align: middle;
 
 }
@@ -367,7 +367,7 @@ html, body{
     height: 90%;
     color: #9da1a2;
     font-size: larger;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .signin input{
@@ -393,10 +393,20 @@ html, body{
 
 .txt{
     height: 25%;
-    padding-bottom: 0%;
+    padding-bottom: 5%;
 }
-
-@media (max-width: 1000px) {
+.txtt{
+    position: fixed;
+}
+.tx{
+    position: fixed;
+    padding-bottom: 10%;
+    color: transparent;
+}
+.ll{
+    padding-top: 10%;
+}
+@media (max-width: 1300px) {
     .signin{
         width: 94%;
         left: 0;
@@ -419,6 +429,8 @@ html, body{
     /* .txt{
         height: 100%;
     } */
+    .ll{
+    }
 }
 button{
     width: 0;
@@ -431,9 +443,12 @@ button{
 a{
     color: green;
 }
-@media (max-width: 310px) {
+@media (max-width: 350px) {
     .txt{
         height: 50%;
-        padding-bottom: 0%;
+        padding-bottom: 40%;
     }
+    /* .ll{
+        margin-top: 50%;
+    } */
 }
