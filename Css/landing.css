@@ -353,70 +353,72 @@ html, body{
     width: 100%;
     height: 100%;
     background-color: #2a2d32;
+    overflow: hidden;
+    vertical-align: middle;
+
 }
 .signin{
     position: absolute;
+    margin: 0% auto;
     width: 30%;
-    height: 20%;
     /* background-color: black; */
-    top: 40%;
+    top: 30%;
     left: 35%;
-}
-.sinputs{
-    position: relative;
-    height: 80%;
-    width: 80%;
-    padding: 10%;
-    /* background-color: #bbb; */
-}
-.sinputs p {
-    margin: 1% 0;
+    height: 90%;
     color: #9da1a2;
     font-size: larger;
+    overflow: auto;
 }
-.sinputs input{
+
+.signin input{
     background-color: #232427;
     color: #9da1a2;
     font-size: large;
     border: 1px #9da1a242 solid;
     width: 90%;
-    height: 25%; 
+    height: 40px; 
 }
 .wel{
     top: 20%;
     left: 35%;
     font-size: small;
+    height: 50%;
 }
-.well{
-    height: 90%;
-    width: 100%;
-    /* padding: 5%; */
-}
+
 #nn{
     font-size: small;
     color: red;
     display: none;
 }
 
-@media (max-width: 991px) {
+.txt{
+    height: 25%;
+    padding-bottom: 0%;
+}
+
+@media (max-width: 1000px) {
     .signin{
         width: 94%;
         left: 0;
         margin: 0;
         padding: 0;
-        
         padding: 3%;
         padding-bottom: 5%;
         top: 15%;
         /* background-color: #bbb; */
+
     }
-    .sinputs{
-        width: 94%;
-        padding: 3%;
+    .txt{
+        height: 50%;
+        padding-bottom: 0%;
     }
-    .dd{
-        top: 50%;
+
+    .wel{
+        height: 40%;
     }
+    /* .txt{
+        height: 100%;
+    } */
 }
 button{
     width: 0;
@@ -428,4 +430,10 @@ button{
 }
 a{
     color: green;
+}
+@media (max-width: 310px) {
+    .txt{
+        height: 50%;
+        padding-bottom: 0%;
+    }
 }
