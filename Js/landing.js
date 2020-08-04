@@ -1,4 +1,4 @@
-let welcomeText = "Hello! I am Vinayak Dubey.\nWelcome to my portfolio!\nThe quieter you become, the more you can hear. \nYou can continue by signing in with username 'guest'.";
+let welcomeText = "Hello This is a sample welcome page\nTemplate created by R Narayan\nYou can continue by signing in with username guest.";
 // You can give your oqn welcome text here no need for my name
 let sss = welcomeText.replace("\n", "<br><br>")
 document.getElementById("welcomeText1").innerHTML = sss

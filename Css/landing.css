@@ -353,7 +353,7 @@ html, body{
     width: 100%;
     height: 100%;
     background-color: #2a2d32;
-    /* overflow: hidden; */
+    overflow: scroll;
     vertical-align: middle;
 
 }
