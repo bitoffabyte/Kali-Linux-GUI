@@ -38,4 +38,4 @@ IF you are deploying this website please use an obfuscator to encrypt the js fil
 
 ## Author
 
-* **R Narayan**  https://github.com/rootnarayan
+* **R Narayan**  https://github.com/bitoffabyte
