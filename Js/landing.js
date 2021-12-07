@@ -37,10 +37,8 @@ let commandInfo = {
 	cd: 'Change the current working directory.', //done
 	mv: 'Move(rename) files.', //done
 	rm: 'Remove files or directories.', //done
-	rmdir:
-		'Remove directory, this command will only work if the folders are empty.', //done
-	touch:
-		"Change file timestamps.If the file doesn't exist, it's created an empty one.",
+	rmdir: 'Remove directory, this command will only work if the folders are empty.', //done
+	touch: "Change file timestamps.If the file doesn't exist, it's created an empty one.",
 	sudo: 'Execute a command as the superuser.<br><br>',
 	flag: 'Check it out :)',
 	fork: 'Fork this repository',
@@ -55,11 +53,11 @@ let listOfFiles = {
 	},
 	'Contact_Me.txt': () => {
 		historyCommands +=
-			'You can get in touch with me in any social media websites, i go by @rootnarayan<br><br>';
+			'You can get in touch with me in any social media websites, i go by @bitoffabyte<br><br>';
 	},
 	'Github.txt': () => {
 		historyCommands +=
-			"<a href = 'https://github.com/rootnarayan' target='_blank'>https://github.com/rootnarayan</a><br><br>";
+			"<a href = 'https://github.com/bitoffabyte' target='_blank'>https://github.com/bitoffabyte</a><br><br>";
 	},
 	'Linkedin.txt': () => {
 		historyCommands +=
@@ -372,13 +370,13 @@ const commandFunction = (c) => {
 	}
 	if (c == 'flag') {
 		historyCommands +=
-			"Hint: Counter Strike Source was such a nice game!, with amazing bases<br>To submit flag type 'flag rootnarayan{flag}'<br>flag is present in the same format";
+			"Hint: Counter Strike Source was such a nice game!, with amazing bases<br>To submit flag type 'flag bitoffabyte{flag}'<br>flag is present in the same format";
 	} else if (s[0] == 'flag') {
 		flag(s);
 	}
 	if (c == 'fork') {
 		historyCommands +=
-			"You can fork this website <br><a href ='https://github.com/rootnarayan/Kali-Linux-GUI' target='_blank'>here</a>";
+			"You can fork this website <br><a href ='https://github.com/bitoffabyte/Kali-Linux-GUI' target='_blank'>here</a>";
 	}
 
 	scrollToBot();
